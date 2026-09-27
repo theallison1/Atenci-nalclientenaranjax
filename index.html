@@ -629,51 +629,49 @@
   </div>
 
   <script>
-    // Configuración del botón de descarga según sistema operativo
-    const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.naranjax.app';
-    const appStoreUrl = 'https://apps.apple.com/ar/app/naranja-x/id1453205318';
+  // Configuración de enlaces a las tiendas
+  const playStoreUrl = 'https://play.google.com/store/search?q=naranja%20x&c=apps';
+  const appStoreUrl = 'https://apps.apple.com/ar/app/naranja-x-cuenta-y-tarjeta/id1453205318';
 
-    const downloadBtn = document.getElementById('downloadAppBtn');
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  const downloadBtn = document.getElementById('downloadAppBtn');
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-      downloadBtn.href = appStoreUrl;
+  // Detección de dispositivo iOS o Android/Desktop
+  if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+    downloadBtn.href = appStoreUrl;
+  } else {
+    downloadBtn.href = playStoreUrl;
+  }
+
+  // Acordeón de preguntas frecuentes
+  document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+      const answer = button.nextElementSibling;
+      const isVisible = answer.style.display === 'block';
+      
+      document.querySelectorAll('.faq-answer').forEach(el => el.style.display = 'none');
+      
+      answer.style.display = isVisible ? 'none' : 'block';
+    });
+  });
+
+  // Control de visibilidad del botón flotante según la dirección del scroll
+  let lastScrollTop = 0;
+  const bottomBar = document.getElementById('bottomBar');
+
+  window.addEventListener('scroll', () => {
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScroll > lastScrollTop && currentScroll > 80) {
+      bottomBar.classList.add('is-visible');
     } else {
-      // Por defecto para Android y computadoras de escritorio redirige a Play Store
-      downloadBtn.href = playStoreUrl;
+      bottomBar.classList.remove('is-visible');
     }
 
-    // Acordeón de preguntas frecuentes
-    document.querySelectorAll('.faq-question').forEach(button => {
-      button.addEventListener('click', () => {
-        const answer = button.nextElementSibling;
-        const isVisible = answer.style.display === 'block';
-        
-        document.querySelectorAll('.faq-answer').forEach(el => el.style.display = 'none');
-        
-        answer.style.display = isVisible ? 'none' : 'block';
-      });
-    });
-
-    // Control de visibilidad del botón flotante según la dirección del scroll
-    let lastScrollTop = 0;
-    const bottomBar = document.getElementById('bottomBar');
-
-    window.addEventListener('scroll', () => {
-      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-      // Si se desplaza hacia abajo y no está en el tope superior
-      if (currentScroll > lastScrollTop && currentScroll > 80) {
-        bottomBar.classList.add('is-visible');
-      } else {
-        // Si se desplaza hacia arriba
-        bottomBar.classList.remove('is-visible');
-      }
-
-      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-    });
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  });
   </script>
-
+  
 </body>
                                                                                                                </html>
             
