@@ -1,6 +1,7 @@
 FROM nginx:alpine
 
-COPY Index.html /usr/share/nginx/html/index.html
+# Copia TODOS los archivos del repositorio (HTML, imágenes, CSS, etc.)
+COPY . /usr/share/nginx/html/
 
 EXPOSE 80
 
