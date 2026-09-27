@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Contactate con MiFintech">
+<title>Contacto | MiFintech</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;color:#222;background:#fff}
+header{height:70px;border-bottom:1px solid #eee;display:flex;
+justify-content:space-between;align-items:center;padding:0 6%}
+.logo{font-size:21px;font-weight:bold;color:#ff6a00}
+nav a{margin-left:25px;text-decoration:none;color:#333;font-size:14px}
+main{max-width:1050px;margin:70px auto;padding:0 25px;
+display:grid;grid-template-columns:1fr 1fr;gap:70px}
+h1{font-size:40px;margin-bottom:15px}
+.sub{color:#666;margin-bottom:35px;line-height:1.6}
+.info{margin:22px 0;font-size:14px;color:#666}
+.info b{display:block;color:#111;margin-bottom:4px}
+.card{padding:30px;border:1px solid #eee;border-radius:15px;
+box-shadow:0 10px 30px #0000000d}
+form{display:grid;gap:15px}
+label{font-size:13px;font-weight:bold;display:block;margin-bottom:6px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #ddd;
+border-radius:8px;font:inherit;outline:none}
+input:focus,select:focus,textarea:focus{border-color:#ff6a00;
+box-shadow:0 0 0 3px #ff6a0020}
+textarea{min-height:120px;resize:vertical}
+button{padding:13px;border:0;border-radius:8px;background:#ff6a00;
+color:white;font-weight:bold;font-size:15px;cursor:pointer}
+button:hover{background:#e85f00}
+.error{color:#d32f2f;font-size:12px;margin-top:4px}
+.ok{color:#2e7d32;font-size:14px}
+@media(max-width:750px){
+main{grid-template-columns:1fr;margin:40px auto;gap:40px}
+h1{font-size:32px}
+header{padding:0 20px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">MiFintech</div>
+  <nav>
+    <a href="#">Productos</a>
+    <a href="#">Ayuda</a>
+    <a href="#">Contacto</a>
+  </nav>
+</header>
+
+<main>
+
+<section>
+  <h1>Contactate con nosotros</h1>
+  <p class="sub">
+    Completá el formulario y te respondemos a la brevedad.
+  </p>
+
+  <div class="info">
+    <b>Teléfono</b>0800-000-0000
+  </div>
+
+  <div class="info">
+    <b>Email</b>soporte@ejemplo.com
+  </div>
+
+  <div class="info">
+    <b>Horario</b>Lunes a viernes, 9 a 18 hs
+  </div>
+</section>
+
+<section class="card">
+  <h2>Enviá tu consulta</h2>
+  <br>
+
+  <form id="form">
+
+    <div>
+      <label>Nombre completo</label>
+      <input id="nombre" maxlength="80" required>
+      <div class="error" id="e1"></div>
+    </div>
+
+    <div>
+      <label>Email</label>
+      <input id="email" type="email" maxlength="120" required>
+      <div class="error" id="e2"></div>
+    </div>
+
+    <div>
+      <label>Motivo</label>
+      <select id="motivo" required>
+        <option value="">Seleccioná una opción</option>
+        <option>Consulta general</option>
+        <option>Reclamo</option>
+        <option>Soporte técnico</option>
+      </select>
+      <div class="error" id="e3"></div>
+    </div>
+
+    <div>
+      <label>Mensaje</label>
+      <textarea id="mensaje" maxlength="500" required></textarea>
+      <div class="error" id="e4"></div>
+    </div>
+
+    <button id="btn">Enviar consulta</button>
+    <div class="ok" id="ok"></div>
+
+  </form>
+</section>
+
+</main>
+
+<script>
+const f=document.getElementById("form");
+
+f.onsubmit=async e=>{
+  e.preventDefault();
+
+  let ok=true;
+  document.querySelectorAll(".error").forEach(x=>x.textContent="");
+
+  if(nombre.value.trim().length<2){
+    e1.textContent="Ingresá tu nombre.";ok=false;
+  }
+
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){
+    e2.textContent="Ingresá un email válido.";ok=false;
+  }
+
+  if(!motivo.value){
+    e3.textContent="Seleccioná un motivo.";ok=false;
+  }
+
+  if(mensaje.value.trim().length<5){
+    e4.textContent="Escribí un mensaje.";ok=false;
+  }
+
+  if(!ok)return;
+
+  btn.disabled=true;
+  btn.textContent="Enviando...";
+
+  // Reemplazar por fetch() cuando conectes el backend
+  await new Promise(r=>setTimeout(r,800));
+
+  btn.disabled=false;
+  btn.textContent="Enviar consulta";
+  ok.textContent="✓ Mensaje enviado correctamente.";
+  f.reset();
+
+  setTimeout(()=>ok.textContent="",4000);
+};
+</script>
+
+</body>
+</html>
