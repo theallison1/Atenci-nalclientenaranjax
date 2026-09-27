@@ -12,6 +12,7 @@
       --text-dark: #1f2937;
       --text-muted: #555555;
       --bg-gray: #f9fafb;
+      --bg-footer: #eef0f2;
       --border-light: #e5e7eb;
     }
 
@@ -26,6 +27,7 @@
       color: var(--text-dark);
       background-color: #ffffff;
       line-height: 1.4;
+      padding-bottom: 70px; /* Espacio para el botón flotante inferior */
     }
 
     /* Header Navbar */
@@ -79,7 +81,6 @@
       margin-bottom: 40px;
     }
 
-    /* Orden en móvil: La imagen arriba del texto */
     .hero-img {
       order: 1;
       width: 100%;
@@ -273,6 +274,113 @@
       color: var(--text-muted);
     }
 
+    /* FOOTER INSTITUCIONAL */
+    footer {
+      background-color: var(--bg-footer);
+      padding: 30px 20px 40px 20px;
+      margin-top: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .footer-links a {
+      color: #333333;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-badges {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .bcra-badge {
+      background-color: #f28020;
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .bcra-badge a {
+      color: white;
+      text-decoration: underline;
+      display: block;
+      margin-top: 2px;
+    }
+
+    .qr-container {
+      display: flex;
+      gap: 10px;
+    }
+
+    .qr-box {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 6px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .qr-box svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .iso-box {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #444;
+      max-width: 250px;
+    }
+
+    /* BOTÓN FLOTANTE INFERIOR */
+    .fixed-bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 12px 16px;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
+      z-index: 999;
+    }
+
+    .btn-floating {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 12px 20px;
+      background-color: var(--purple-brand);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      border-radius: 20px;
+    }
+
     /* Versión Desktop / Pantallas grandes */
     @media (min-width: 768px) {
       .hero {
@@ -301,6 +409,10 @@
       }
       .channels-grid {
         grid-template-columns: repeat(3, 1fr);
+      }
+      .footer-badges {
+        flex-direction: row;
+        align-items: center;
       }
     }
   </style>
@@ -443,6 +555,58 @@
 
   </div>
 
+  <!-- FOOTER INSTITUCIONAL COMPLETO -->
+  <footer>
+    <div class="container" style="padding:0;">
+      <div class="footer-links">
+        <a href="#">Defensa al consumidor</a>
+        <a href="#">Gobierno institucional</a>
+        <a href="#">PEP's, Sujetos Obligados y FATCA</a>
+        <a href="#">Personas vinculadas</a>
+        <a href="#">Manual de procedimientos</a>
+        <a href="#">Información al usuario financiero</a>
+        <a href="#">Centro de Seguridad</a>
+        <a href="#">Contrato de adhesión Ley 24.240 de Defensa del consumidor</a>
+        <a href="#">Acuerdo Aduc c/ Tarjeta Naranja</a>
+        <a href="#">Management</a>
+        <a href="#">Costos, comisiones y límites</a>
+        <a href="#">Inversores</a>
+      </div>
+
+      <div class="footer-badges">
+        <div class="bcra-badge">
+          USUARIOS FINANCIEROS<br>
+          <span style="font-weight: normal; font-size: 11px;">Visitá nuestra web</span>
+          <a href="https://www.usuariosfinancieros.gob.ar" target="_blank">www.usuariosfinancieros.gob.ar</a>
+        </div>
+
+        <div class="qr-container">
+          <div class="qr-box">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm8-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm13-2h3v3h-3v-3zm-5 0h3v3h-3v-3zm0 5h3v3h-3v-3zm5 0h3v3h-3v-3z"/></svg>
+            <span>DATA<br>FISCAL</span>
+          </div>
+          <div class="qr-box">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm8-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm13-2h3v3h-3v-3zm-5 0h3v3h-3v-3zm0 5h3v3h-3v-3zm5 0h3v3h-3v-3z"/></svg>
+            <span>DATA<br>FISCAL</span>
+          </div>
+        </div>
+
+        <div class="iso-box">
+          <div>
+            <strong>Sistema de Gestión</strong><br>
+            ISO/IEC 27001:2022
+          </div>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm8-2h8v8h-8V2zm2 2v4h4V4h-4zM2 14h8v8H2v-8zm2 2v4h4v-4H4zm13-2h3v3h-3v-3zm-5 0h3v3h-3v-3zm0 5h3v3h-3v-3zm5 0h3v3h-3v-3z"/></svg>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTÓN FLOTANTE INFERIOR -->
+  <div class="fixed-bottom-bar">
+    <a href="#" class="btn-floating">Quiero ser cliente</a>
+  </div>
+
   <script>
     document.querySelectorAll('.faq-question').forEach(button => {
       button.addEventListener('click', () => {
@@ -458,4 +622,4 @@
 
 </body>
   </html>
-  
+          
