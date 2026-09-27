@@ -1,50 +1,266 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Contactate con MiFintech">
-<title>Contacto | MiFintech</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Centro de Atención y Contacto - MiFintech">
+  <title>Contacto | MiFintech</title>
 
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;color:#222;background:#fff}
-header{height:70px;border-bottom:1px solid #eee;display:flex;
-justify-content:space-between;align-items:center;padding:0 6%}
-.logo{font-size:21px;font-weight:bold;color:#ff6a00}
-nav a{margin-left:25px;text-decoration:none;color:#333;font-size:14px}
-main{max-width:1050px;margin:70px auto;padding:0 25px;
-display:grid;grid-template-columns:1fr 1fr;gap:70px}
-h1{font-size:40px;margin-bottom:15px}
-.sub{color:#666;margin-bottom:35px;line-height:1.6}
-.info{margin:22px 0;font-size:14px;color:#666}
-.info b{display:block;color:#111;margin-bottom:4px}
-.card{padding:30px;border:1px solid #eee;border-radius:15px;
-box-shadow:0 10px 30px #0000000d}
-form{display:grid;gap:15px}
-label{font-size:13px;font-weight:bold;display:block;margin-bottom:6px}
-input,select,textarea{width:100%;padding:12px;border:1px solid #ddd;
-border-radius:8px;font:inherit;outline:none}
-input:focus,select:focus,textarea:focus{border-color:#ff6a00;
-box-shadow:0 0 0 3px #ff6a0020}
-textarea{min-height:120px;resize:vertical}
-button{padding:13px;border:0;border-radius:8px;background:#ff6a00;
-color:white;font-weight:bold;font-size:15px;cursor:pointer}
-button:hover{background:#e85f00}
-.error{color:#d32f2f;font-size:12px;margin-top:4px}
-.ok{color:#2e7d32;font-size:14px}
-@media(max-width:750px){
-main{grid-template-columns:1fr;margin:40px auto;gap:40px}
-h1{font-size:32px}
-header{padding:0 20px}
-}
-</style>
+  <style>
+    :root {
+      --primary: #ff6a00;
+      --primary-hover: #e85f00;
+      --text-dark: #1f2937;
+      --text-muted: #4b5563;
+      --bg-light: #f9fafb;
+      --border-color: #e5e7eb;
+      --error: #dc2626;
+      --success: #15803d;
+      --success-bg: #f0fdf4;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text-dark);
+      background-color: #ffffff;
+      line-height: 1.5;
+    }
+
+    header {
+      height: 70px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 6%;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    nav a {
+      margin-left: 24px;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    main {
+      max-width: 1050px;
+      margin: 60px auto;
+      padding: 0 25px;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    h1 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .sub {
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+
+    /* Tarjeta de Seguridad Fintech */
+    .security-notice {
+      background-color: #fff7ed;
+      border-left: 4px solid var(--primary);
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #9a3412;
+      margin-bottom: 30px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .security-notice svg {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* Lista de información de contacto */
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .info-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background-color: #fff1e6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .info-content {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .info-content strong {
+      display: block;
+      color: var(--text-dark);
+      font-size: 15px;
+      margin-bottom: 2px;
+    }
+
+    .info-content a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .info-content a:hover {
+      text-decoration: underline;
+    }
+
+    /* Tarjeta del Formulario */
+    .card {
+      padding: 35px;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      background: #ffffff;
+    }
+
+    .card h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: grid;
+      gap: 18px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text-dark);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.15);
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    button {
+      padding: 14px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--primary);
+      color: white;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background-color 0.2s, opacity 0.2s;
+    }
+
+    button:hover:not(:disabled) {
+      background: var(--primary-hover);
+    }
+
+    button:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    .error {
+      color: var(--error);
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .ok-message {
+      display: none;
+      padding: 12px;
+      border-radius: 8px;
+      background-color: var(--success-bg);
+      color: var(--success);
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      border: 1px solid #bbf7d0;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        grid-template-columns: 1fr;
+        margin: 30px auto;
+        gap: 35px;
+      }
+      h1 { font-size: 30px; }
+      header { padding: 0 20px; }
+      .card { padding: 25px; }
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">MiFintech</div>
+  <a href="#" class="logo">MiFintech</a>
   <nav>
     <a href="#">Productos</a>
     <a href="#">Ayuda</a>
@@ -54,108 +270,160 @@ header{padding:0 20px}
 
 <main>
 
-<section>
-  <h1>Contactate con nosotros</h1>
-  <p class="sub">
-    Completá el formulario y te respondemos a la brevedad.
-  </p>
+  <section>
+    <h1>Contactate con nosotros</h1>
+    <p class="sub">Completá el formulario y nos comunicaremos con vos a la brevedad.</p>
 
-  <div class="info">
-    <b>Teléfono</b>0800-000-0000
-  </div>
-
-  <div class="info">
-    <b>Email</b>soporte@ejemplo.com
-  </div>
-
-  <div class="info">
-    <b>Horario</b>Lunes a viernes, 9 a 18 hs
-  </div>
-</section>
-
-<section class="card">
-  <h2>Enviá tu consulta</h2>
-  <br>
-
-  <form id="form">
-
-    <div>
-      <label>Nombre completo</label>
-      <input id="nombre" maxlength="80" required>
-      <div class="error" id="e1"></div>
+    <!-- Banner de Seguridad Fintech -->
+    <div class="security-notice" role="alert">
+      <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8s0 0 0 0z"/></svg>
+      <div>
+        <strong>Tu seguridad es lo primero:</strong> Desde MiFintech nunca te pediremos tus claves secretas, número de Token ni PIN por mail ni por teléfono.
+      </div>
     </div>
 
-    <div>
-      <label>Email</label>
-      <input id="email" type="email" maxlength="120" required>
-      <div class="error" id="e2"></div>
+    <div class="contact-list">
+      <div class="info-item">
+        <div class="info-icon">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div class="info-content">
+          <strong>Atención telefónica</strong>
+          <a href="tel:08000000000">0800-000-0000</a>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+        </div>
+        <div class="info-content">
+          <strong>Correo electrónico</strong>
+          <a href="mailto:soporte@mifintech.com">soporte@mifintech.com</a>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div class="info-content">
+          <strong>Horario de atención</strong>
+          Lunes a viernes de 9 a 18 hs
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div>
-      <label>Motivo</label>
-      <select id="motivo" required>
-        <option value="">Seleccioná una opción</option>
-        <option>Consulta general</option>
-        <option>Reclamo</option>
-        <option>Soporte técnico</option>
-      </select>
-      <div class="error" id="e3"></div>
-    </div>
+  <section class="card">
+    <h2>Enviá tu consulta</h2>
 
-    <div>
-      <label>Mensaje</label>
-      <textarea id="mensaje" maxlength="500" required></textarea>
-      <div class="error" id="e4"></div>
-    </div>
+    <form id="form" novalidate>
+      <div class="form-group">
+        <label for="nombre">Nombre completo</label>
+        <input id="nombre" name="nombre" type="text" maxlength="80" autocomplete="name" required placeholder="Ej. Ana Pérez">
+        <div class="error" id="e1"></div>
+      </div>
 
-    <button id="btn">Enviar consulta</button>
-    <div class="ok" id="ok"></div>
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input id="email" name="email" type="email" maxlength="120" autocomplete="email" required placeholder="nombre@ejemplo.com">
+        <div class="error" id="e2"></div>
+      </div>
 
-  </form>
-</section>
+      <div class="form-group">
+        <label for="motivo">Motivo de consulta</label>
+        <select id="motivo" name="motivo" required>
+          <option value="">Seleccioná una opción</option>
+          <option value="cuenta">Estado o apertura de cuenta</option>
+          <option value="transferencias">Inconvenientes con transferencias</option>
+          <option value="tarjetas">Tarjetas y consumos</option>
+          <option value="seguridad">Reportar un problema de seguridad</option>
+          <option value="otro">Otras consultas generales</option>
+        </select>
+        <div class="error" id="e3"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" maxlength="500" required placeholder="Escribí los detalles de tu consulta..."></textarea>
+        <div class="error" id="e4"></div>
+      </div>
+
+      <button type="submit" id="btn">Enviar consulta</button>
+      <div class="ok-message" id="okMsg" role="status" aria-live="polite"></div>
+    </form>
+  </section>
 
 </main>
 
 <script>
-const f=document.getElementById("form");
+  const form = document.getElementById("form");
+  const btn = document.getElementById("btn");
+  const okMsg = document.getElementById("okMsg");
 
-f.onsubmit=async e=>{
-  e.preventDefault();
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  let ok=true;
-  document.querySelectorAll(".error").forEach(x=>x.textContent="");
+    let isValid = true;
 
-  if(nombre.value.trim().length<2){
-    e1.textContent="Ingresá tu nombre.";ok=false;
-  }
+    // Limpiar errores previos
+    document.querySelectorAll(".error").forEach(el => el.textContent = "");
+    okMsg.style.display = "none";
 
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){
-    e2.textContent="Ingresá un email válido.";ok=false;
-  }
+    const nombreVal = document.getElementById("nombre").value.trim();
+    const emailVal = document.getElementById("email").value.trim();
+    const motivoVal = document.getElementById("motivo").value;
+    const mensajeVal = document.getElementById("mensaje").value.trim();
 
-  if(!motivo.value){
-    e3.textContent="Seleccioná un motivo.";ok=false;
-  }
+    // Validaciones
+    if (nombreVal.length < 2) {
+      document.getElementById("e1").textContent = "Ingresá un nombre válido.";
+      isValid = false;
+    }
 
-  if(mensaje.value.trim().length<5){
-    e4.textContent="Escribí un mensaje.";ok=false;
-  }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailVal)) {
+      document.getElementById("e2").textContent = "Ingresá un formato de email válido.";
+      isValid = false;
+    }
 
-  if(!ok)return;
+    if (!motivoVal) {
+      document.getElementById("e3").textContent = "Seleccioná un motivo de la lista.";
+      isValid = false;
+    }
 
-  btn.disabled=true;
-  btn.textContent="Enviando...";
+    if (mensajeVal.length < 10) {
+      document.getElementById("e4").textContent = "El mensaje debe tener al menos 10 caracteres.";
+      isValid = false;
+    }
 
-  // Reemplazar por fetch() cuando conectes el backend
-  await new Promise(r=>setTimeout(r,800));
+    if (!isValid) return;
 
-  btn.disabled=false;
-  btn.textContent="Enviar consulta";
-  ok.textContent="✓ Mensaje enviado correctamente.";
-  f.reset();
+    // Estado de envío
+    btn.disabled = true;
+    btn.textContent = "Enviando...";
 
-  setTimeout(()=>ok.textContent="",4000);
-};
+    try {
+      // Simulación de envío a API (Reemplazar por fetch real al backend)
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      // Éxito
+      okMsg.textContent = "✓ Consulta enviada con éxito. Te responderemos a la brevedad.";
+      okMsg.style.display = "block";
+      form.reset();
+
+    } catch (err) {
+      alert("Hubo un error al enviar la consulta. Intentalo de nuevo.");
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Enviar consulta";
+      
+      setTimeout(() => {
+        okMsg.style.display = "none";
+      }, 5000);
+    }
+  });
 </script>
 
 </body>
