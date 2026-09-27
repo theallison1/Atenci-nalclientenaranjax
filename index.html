@@ -126,6 +126,7 @@
       font-size: 15px;
       border-radius: 12px;
       transition: background-color 0.2s;
+      cursor: pointer;
     }
 
     .btn-purple:hover {
@@ -456,7 +457,7 @@
       <div class="hero-text">
         <h1>Gestioná tu consulta desde la app</h1>
         <p>Ingresá a Ayuda, cargá tu consulta y hacé seguimiento de tu caso de forma simple y rápida desde la app Naranja X.</p>
-        <a href="#" class="btn-purple">Descargar app</a>
+        <a id="downloadAppBtn" href="#" class="btn-purple" target="_blank" rel="noopener noreferrer">Descargar app</a>
       </div>
     </section>
 
@@ -628,6 +629,20 @@
   </div>
 
   <script>
+    // Configuración del botón de descarga según sistema operativo
+    const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.naranjax.app';
+    const appStoreUrl = 'https://apps.apple.com/ar/app/naranja-x/id1453205318';
+
+    const downloadBtn = document.getElementById('downloadAppBtn');
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      downloadBtn.href = appStoreUrl;
+    } else {
+      // Por defecto para Android y computadoras de escritorio redirige a Play Store
+      downloadBtn.href = playStoreUrl;
+    }
+
     // Acordeón de preguntas frecuentes
     document.querySelectorAll('.faq-question').forEach(button => {
       button.addEventListener('click', () => {
@@ -660,5 +675,5 @@
   </script>
 
 </body>
-          </html>
-          
+                                                                                                               </html>
+            
